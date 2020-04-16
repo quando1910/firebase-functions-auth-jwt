@@ -1,5 +1,6 @@
 # Jwt Auth Service
 This is a sample project for building auth service with JWT. Use firebase functions &amp; firebase hosting for development.
+Hosted in firebase at https://us-central1-auth-jwt-sample.cloudfunctions.net
 
 ## Development
 TBU...
