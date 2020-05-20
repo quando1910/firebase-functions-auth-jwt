@@ -15,10 +15,11 @@ export const signInWithLink = functions.https.onRequest((request, response) => {
   return corsOptions(request, response, () => {
     const uid = request.query.uid;
     if (uid) {
-      const token = jwt.sign({
-        exp: Math.floor(Date.now() / 1000) + (60 * 60),
-        uid: request.query.uid
-      }, SECRECT);
+      const payload = {
+        ...{ exp: Math.floor(Date.now() / 1000) + (60 * 60) }
+        ...request.query
+      };
+      const token = jwt.sign(payload, SECRECT);
       response.send({token});
     } else {
       response.status(400).send({msg: 'Bad Request'});
