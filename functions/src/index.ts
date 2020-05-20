@@ -16,7 +16,7 @@ export const signInWithLink = functions.https.onRequest((request, response) => {
     const uid = request.query.uid;
     if (uid) {
       const payload = {
-        ...{ exp: Math.floor(Date.now() / 1000) + (60 * 60) }
+        ...{ exp: Math.floor(Date.now() / 1000) + (60 * 60) },
         ...request.query
       };
       const token = jwt.sign(payload, SECRECT);
